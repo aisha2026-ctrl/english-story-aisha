@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Lost Key</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f8ff; padding: 20px; }
+    h1 { color: #0044cc; }
+    .story { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); margin-bottom: 20px; }
+    button { margin: 5px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .option { background: #4CAF50; color: white; }
+  </style>
+</head>
+<body>
+
+<h1>The Lost Key</h1>
+<p>By: Aisha Batea Alharbi | English Project 2025</p>
+
+<div class="story" id="story">
+  <p>You find a mysterious key on your desk. What will you do?</p>
+  <button class="option" onclick="nextScene('look')">Look around the room</button>
+  <button class="option" onclick="nextScene('leave')">Leave it on the desk</button>
+</div>
+
+<script>
+function nextScene(choice) {
+  const storyDiv = document.getElementById('story');
+  if(choice === 'look'){
+    storyDiv.innerHTML = `
+      <p>You see a locked box in the corner. Do you want to open it?</p>
+      <button class="option" onclick="nextScene('open')">Yes, open it</button>
+      <button class="option" onclick="nextScene('ignore')">No, ignore it</button>
+    `;
+  } else if(choice === 'leave'){
+    storyDiv.innerHTML = `
+      <p>You leave the key. Suddenly, a note appears: "The key is important!" What now?</p>
+      <button class="option" onclick="nextScene('look')">Go back and look</button>
+      <button class="option" onclick="nextScene('ignore')">Ignore the note</button>
+    `;
+  } else if(choice === 'open'){
+    storyDiv.innerHTML = `<p>Congratulations! You opened the box and found a treasure! 🎉</p>`;
+  } else if(choice === 'ignore'){
+    storyDiv.innerHTML = `<p>You ignored the box. The mystery remains unsolved. 😅</p>`;
+  }
+}
+</script>
+
+</body>
+</html>
